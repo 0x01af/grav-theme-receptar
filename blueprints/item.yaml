@@ -18,8 +18,8 @@ form:
               highlight: 1
               default: false
               options:
-                true: ADMIN.YES
-                false: ADMIN.NO
+                true: 'YES'
+                false: 'NO'
               validate:
                 type: boolean
 
