@@ -1,26 +1,11 @@
-{% set _page_content = page.content|raw %}
+{% set _page_content = page.summary|raw %}
 {% if display_mode_full and page.header.page_content_without_summary %}
   {% set _page_content = page.content|slice(page.summary|length) %}
 {% elseif display_mode_full %}
-{% 
+  {% {% set _page_content = page.content|raw %}
+{% elseif not display_mode_full and site.summary.striptags == true and page.summary != page.content %}
+  {% set _page_content =  page.summary|striptags %}
 {% endif %}
-{# Theme: Default truncate content to 550 characters #}
-
-{% if display_mode_full and page.header.continue_link is same as(false) %}
-  {% set show_prev_next = true %}
-{% else %}
-  {% set show_prev_next = true %}
-{% endif %}
-
-{% elseif not display_mode_full and page.summary != page.content %}
-  {% if site.summary.striptags == true %}
-    {% set _page_content =  page.summary|striptags %}
-  {% else %}
-    {% set _page_content = page.summary|raw %}
-  {% endif %}
-
-  
-
 
 <article id="post-{{ loop.index }}" class="post-{{ loop.index }} post type-post status-publish format-standard has-post-thumbnail hentry category-cakes tag-no-excerpt">
 
