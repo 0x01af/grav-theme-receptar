@@ -1,8 +1,8 @@
-{% set _page_content = page.summary|raw %}
+{% set _page_content = page.summary %}
 {% if display_mode_full and page.header.page_content_without_summary %}
   {% set _page_content = page.content|slice(page.summary|length) %}
 {% elseif display_mode_full %}
-  {% set _page_content = page.content|raw %}
+  {% set _page_content = page.content %}
 {% elseif not display_mode_full and site.summary.striptags == true and page.summary != page.content %}
   {% set _page_content =  page.summary|striptags %}
 {% endif %}
@@ -147,7 +147,7 @@
         {% endif %}
         <div class="clear"></div>
 
-        {{ _page_content }}
+        {{ _page_content|raw }}
         
         {% if page.header.continue_link is not same as(false) %}
         {% if not display_mode_full and page.summary != page.content %}
